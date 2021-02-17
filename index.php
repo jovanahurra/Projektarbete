@@ -13,7 +13,7 @@
             margin-right: auto;
             margin-top: auto;
             margin-bottom: auto;
-            padding: 20px 0;
+            
         }
     </style>
 </head> 
@@ -37,10 +37,10 @@ $result = $stmt->fetchAll();
 echo "<div class='row'>";
 
 foreach($result as $key => $value){
-$id = $value['product_id'];  // Detta är en primärnyckel
+$id = $value['product_id'];  
 
 $html = "
-          <div class='col-lg-4 col-md-6 mb-4'>
+          <div class='col-lg-4 col-md-6 mb-4' style='padding-top: 80px'>
             <div class='card h-100'>
               <a href='#'><img class='card-img-top' src='' alt=''></a>
               <div class='card-body'>
@@ -61,7 +61,6 @@ $html = "
 echo $html;
 }
 ?>
-
 
 <hr>
 <footer class="text-center text-muted">
