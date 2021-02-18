@@ -36,7 +36,7 @@
     <div class="container">
       <a class="navbar-brand" href="../index.php">Home</a>
       <a class="navbar-brand" href="../contactForm/index.php" target='_blank'>Kontakt</a>
-      <a href="/Databasteknik21/Projektarbete/contactForm/Admin/index.php" class="btn btn-primary btn-lg" role="button">Admin</a>
+      <a href="../contactForm/Admin/index.php" class="btn btn-primary btn-lg" role="button">Admin</a>
     </div>
   </nav>
 

@@ -22,7 +22,7 @@ $rowCount = $stmt->rowCount();
 require_once("admin.php");
 
 $message = "<div class='alert alert-danger' role='alert'>
-                <p>$rowCount rad har raderats!</p>
+                <p>$rowCount meddelande har raderats!</p>
             </div>";  
 
 echo $message;

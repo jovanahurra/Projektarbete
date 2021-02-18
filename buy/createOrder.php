@@ -1,5 +1,4 @@
 <?php
-
 require_once('../database.php');
 
 $title = "";
@@ -7,13 +6,13 @@ $author = "";
 $price = "";
 $id = "";
 
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $productID = $_GET['product_id'];
     $stmt = $conn->prepare("SELECT *, authors.author 
                         FROM (products INNER JOIN authors ON products.author = authors.authors_id) 
                         WHERE products.product_id = $productID");
-
     $stmt->execute();
     $result = $stmt->fetchAll();
 
@@ -30,14 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   ";
 
     foreach ($result as $key => $value) {
-
         $id = $value['product_id'];  // Detta är en primärnyckel
         $table .= "
       <tr>
           <td><img src='../images/$value[image]' style='width: 50%'></td>
           <td>$value[title]</td>
           <td>$value[author]</td>
-          <td>$value[price]</td> 
+          <td>$value[price] kr</td> 
      </tr>
   ";
         $title = $value['title'];
@@ -45,33 +43,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $price = $value['price'];
     }
     $table .= "</table>";
-
     echo $table;
 }
-
 ?>
 
 <h4>Skriv dina uppgifter för att beställa boken:</h4>
 <form action="confirmSida.php" class="row" method="post">
 
     <input type="hidden" name="id" value="<?php echo $id ?>">
-
+  
     <div class="col-md-12 my-2">
         <label for="bok">Bok</label>
-        <input type="text" id="bok" class="form-control" name="bok" value="<?php echo $title ?>" readonly>
+        <input type="text" id="book" class="form-control" name="book" value="<?php echo $title ?>" readonly>
     </div>
 
     <div class="col-md-6 my-2">
         <label for="author">Förtfattare</label>
-        <input type="text" id="author" class="form-control" name="Författare" value="<?php echo $author ?>" readonly>
+        <input type="text" id="author" class="form-control" name="author" value="<?php echo $author ?>" readonly>
     </div>
 
     <div class="col-md-6 my-2">
         <label for="price">Pris</label>
-        <input type="text" id="price" class="form-control" name="Pris" value="<?php echo $price ?>" readonly>
+        <input type="text" id="price" class="form-control" name="price" value="<?php echo $price . ' kr' ?>" readonly>
     </div>
-
-
 
     <div class="col-md-6 my-2">
         <label for="name">Namn</label>
